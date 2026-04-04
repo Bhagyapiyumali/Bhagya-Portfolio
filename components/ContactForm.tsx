@@ -54,20 +54,20 @@ export default function ContactForm() {
                   {
                     icon: Mail,
                     label: 'Email',
-                    value: 'bhagya.senevirathna@email.com',
-                    href: 'mailto:bhagya.senevirathna@email.com',
+                    value: 'bhagyapiyumali2001@gmail.com',
+                    href: 'mailto:bhagyapiyumali2001@gmail.com',
                   },
                   {
                     icon: MapPin,
                     label: 'Location',
-                    value: 'Negombo, Sri Lanka',
+                    value: 'Monaragala, Sri Lanka',
                     href: '#',
                   },
                   {
                     icon: Phone,
                     label: 'Phone',
-                    value: '+94 XX XXX XXXX',
-                    href: 'tel:+94XXXXXXXXX',
+                    value: '+94 71 371 8585',
+                    href: 'tel:+94713718585',
                   },
                 ].map((item, index) => (
                   <motion.a
@@ -142,7 +142,7 @@ export default function ContactForm() {
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="w-full px-6 py-4 bg-white dark:bg-slate-800 rounded-2xl text-base focus:ring-2 focus:ring-emerald-500 outline-none resize-none transition-all"
-                      placeholder="Tell me about your project..."
+                      placeholder="Tell me about your idea..."
                       required
                     />
                   </div>
