@@ -32,9 +32,9 @@ export default function Footer() {
             className="flex items-center gap-6"
           >
             {[
-              { icon: Github, href: 'https://github.com/yourusername' },
-              { icon: Linkedin, href: 'https://linkedin.com/in/yourusername' },
-              { icon: Mail, href: 'mailto:bhagya@example.com' },
+              { icon: Github, href: 'https://github.com/Bhagyapiyumali' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/bhagya-piyumali-senevirathna/' },
+              { icon: Mail, href: 'mailto:bhagyapiyumali2001@gmail.com' },
             ].map((social, index) => (
               <motion.a
                 key={index}
@@ -59,7 +59,7 @@ export default function Footer() {
           >
             <span>Made with</span>
             <Heart size={14} className="text-red-500 fill-red-500" />
-            <span>in Negombo, Sri Lanka</span>
+            <span>in Monaragala, Sri Lanka</span>
           </motion.div>
         </div>
 
