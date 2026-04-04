@@ -57,7 +57,7 @@ export default function About() {
                   <div className="w-2 h-2 bg-white rounded-full mt-2" />
                   <div>
                     <p className="font-semibold">Location</p>
-                    <p className="text-purple-100">Negombo, Sri Lanka</p>
+                    <p className="text-purple-100">Monaragala, Sri Lanka</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
