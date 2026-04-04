@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { MapPin, GraduationCap, Code2, Briefcase } from 'lucide-react';
 
 export default function About() {
   const ref = useRef(null);
@@ -49,38 +50,58 @@ export default function About() {
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-gradient-to-br from-purple-600 to-blue-600 p-8 rounded-3xl text-white shadow-2xl"
+              className="bg-slate-900 p-8 rounded-3xl text-white shadow-2xl border border-slate-700"
             >
-              <h3 className="text-2xl font-bold mb-6">Quick Facts</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-white rounded-full mt-2" />
+              <h3 className="text-2xl font-bold mb-6 text-purple-400">
+                Developer Profile
+              </h3>
+
+              <div className="space-y-6 text-sm">
+
+                {/* Location */}
+                <div className="flex items-center gap-4">
+                  <MapPin className="text-purple-400 w-5 h-5" />
                   <div>
-                    <p className="font-semibold">Location</p>
-                    <p className="text-purple-100">Monaragala, Sri Lanka</p>
+                    <p className="text-slate-400 text-xs">Location</p>
+                    <p className="font-semibold text-white">
+                      Monaragala, Sri Lanka
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-white rounded-full mt-2" />
+
+                {/* Education */}
+                <div className="flex items-center gap-4">
+                  <GraduationCap className="text-blue-400 w-5 h-5" />
                   <div>
-                    <p className="font-semibold">Education</p>
-                    <p className="text-purple-100">BSc. Software Engineering</p>
+                    <p className="text-slate-400 text-xs">Education</p>
+                    <p className="font-semibold text-white">
+                      BSc Software Engineering
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-white rounded-full mt-2" />
+
+                {/* Focus Areas */}
+                <div className="flex items-center gap-4">
+                  <Code2 className="text-indigo-400 w-5 h-5" />
                   <div>
-                    <p className="font-semibold">Interests</p>
-                    <p className="text-purple-100">Web Dev, AI/ML, System Design</p>
+                    <p className="text-slate-400 text-xs">Focus Areas</p>
+                    <p className="font-semibold text-white">
+                      Full-Stack • AI/ML • System Design
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-white rounded-full mt-2" />
+
+                {/* Status */}
+                <div className="flex items-center gap-4">
+                  <Briefcase className="text-green-400 w-5 h-5" />
                   <div>
-                    <p className="font-semibold">Status</p>
-                    <p className="text-purple-100">Available for internships</p>
+                    <p className="text-slate-400 text-xs">Availability</p>
+                    <p className="font-semibold text-green-400">
+                      Open for Internships
+                    </p>
                   </div>
                 </div>
+
               </div>
             </motion.div>
           </div>
