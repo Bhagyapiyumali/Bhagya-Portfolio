@@ -158,7 +158,7 @@ export default function Projects() {
             className="mt-16 text-center"
           >
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Bhagyapiyumali"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-semibold hover:scale-105 transition-transform"
