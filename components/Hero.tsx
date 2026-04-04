@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -165,10 +166,14 @@ export default function Hero() {
                   transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                 />
 
-                <div className="absolute inset-2 rounded-full bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
-                  <div className="text-9xl font-bold text-purple-600 dark:text-purple-400 heading-font">
-                    BS
-                  </div>
+                <div className="absolute inset-2 rounded-full bg-slate-50 dark:bg-slate-950 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/profile.jpeg"
+                    alt="Profile Photo"
+                    fill
+                    className="object-cover rounded-full"
+                    priority
+                  />
                 </div>
 
                 <motion.div
