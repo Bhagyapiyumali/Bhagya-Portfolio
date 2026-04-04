@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Calendar, MapPin, Award } from 'lucide-react';
+import { Calendar, MapPin, Award, Github, Linkedin } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 
 interface VolunteeringExperience {
@@ -186,6 +186,23 @@ export default function Volunteering() {
               ))}
             </div>
           )}
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-16 text-center"
+          >
+            <a
+              href="https://www.linkedin.com/in/bhagya-piyumali-senevirathna/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-semibold hover:scale-105 transition-transform"
+            >
+              <Linkedin size={20} />
+              View More on LinkedIn
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
