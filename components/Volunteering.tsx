@@ -1,62 +1,68 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Calendar, MapPin, Award, Github, Linkedin } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
+import { Calendar, Award, Linkedin } from 'lucide-react';
 
 interface VolunteeringExperience {
   id: string;
   title: string;
   organization: string;
   description: string;
-  image_url: string | null;
+  image: string;
   start_date: string;
   end_date: string | null;
   skills: string[];
-  display_order: number;
 }
+
+// ✅ STATIC DATA (EDIT HERE)
+const experiences: VolunteeringExperience[] = [
+  {
+    id: "1",
+    title: "IEEE Student Branch SUSL",
+    organization: "Secretary, IEEE Student Branch SUSL",
+    description: "Leading and coordinating student branch activities, organizing technical events, and managing operations within the IEEE community.",
+    image: "/volunteering/event01.png",
+    start_date: "2025-08-16",
+    end_date: "2026-08-15",
+    skills: ["Leadership", "Event Management", "Team Management", "Event Coordination"]
+  },
+  {
+    id: "2",
+    title: "HOPE 2.0 IEEE WIE",
+    organization: "Vice Chairperson, HOPE 2.0 IEEE WIE Affinity Group",
+    description: "Contributed to organizing and leading the HOPE 2.0 initiative, empowering women in engineering through impactful programs and events.",
+    image: "/volunteering/event02.jpg",
+    start_date: "2025-06-01",
+    end_date: "2026-06-01",
+    skills: ["Leadership", "Public Speaking", "Project Management", "Communication", "Coordination"]
+  },
+  {
+    id: "3",
+    title: "ICARC 2026",
+    organization: "Volunteering,ICARC 2026 International Conference",
+    description: "Assisted in organizing the ICARC 2026 conference, supporting event logistics, coordination, and participant engagement.",
+    image: "/volunteering/event03.jpg",
+    start_date: "2026-02-18",
+    end_date: "2026-02-19",
+    skills: ["Communication", "Coordination"]
+  },
+  {
+    id: "4",
+    title: "ICARC 2025",
+    organization: "Volunteering, ICARC 2025 International Conference",
+    description: "Actively participated in conference activities, ensuring smooth execution of sessions and assisting attendees.",
+    image: "/volunteering/event04.jpg",
+    start_date: "2025-02-18",
+    end_date: "2025-02-19",
+    skills: ["Communication", "Coordination"]
+  }
+
+];
 
 export default function Volunteering() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [experiences, setExperiences] = useState<VolunteeringExperience[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchVolunteeringData = async () => {
-      try {
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-        if (!supabaseUrl || !supabaseKey) {
-          console.error('Supabase credentials not found');
-          setLoading(false);
-          return;
-        }
-
-        const supabase = createClient(supabaseUrl, supabaseKey);
-        const { data, error } = await supabase
-          .from('volunteering_experiences')
-          .select('*')
-          .order('display_order', { ascending: true });
-
-        if (error) {
-          console.error('Error fetching volunteering data:', error);
-          setExperiences([]);
-        } else {
-          setExperiences(data || []);
-        }
-      } catch (error) {
-        console.error('Failed to fetch volunteering experiences:', error);
-        setExperiences([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVolunteeringData();
-  }, []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -75,6 +81,7 @@ export default function Volunteering() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          {/* Header */}
           <div className="flex items-center gap-3 mb-6">
             <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-full text-sm font-semibold">
               04 — VOLUNTEERING
@@ -82,127 +89,82 @@ export default function Volunteering() {
             <div className="h-px flex-1 bg-gradient-to-r from-purple-500/50 to-transparent" />
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight heading-font mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Community Impact
           </h2>
+
           <p className="text-xl text-slate-600 dark:text-slate-400 mb-16 max-w-3xl">
             Contributing to society through volunteer work and community engagement.
           </p>
 
-          {loading ? (
-            <div className="flex justify-center items-center py-12">
-              <div className="animate-pulse text-slate-500">Loading experiences...</div>
-            </div>
-          ) : experiences.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-slate-500 dark:text-slate-400">
-                No volunteering experiences found. Check back soon!
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-8">
-              {experiences.map((exp, index) => (
-                <motion.div
-                  key={exp.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="grid md:grid-cols-5 gap-8 items-start"
-                >
-                  {/* Image Section */}
-                  <motion.div
-                    className="md:col-span-2 relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg group cursor-pointer"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    {exp.image_url ? (
-                      <>
-                        <img
-                          src={exp.image_url}
-                          alt={exp.title}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </>
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                        <Award size={48} className="text-white opacity-50" />
-                      </div>
-                    )}
-                  </motion.div>
+          {/* Experiences */}
+          <div className="space-y-10">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="grid md:grid-cols-5 gap-8"
+              >
+                {/* Image */}
+                <div className="md:col-span-2 h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg">
+                  <img
+                    src={exp.image}
+                    alt={exp.title}
+                    className="w-full h-full object-cover hover:scale-105 transition duration-300"
+                  />
+                </div>
 
-                  {/* Content Section */}
-                  <div className="md:col-span-3 flex flex-col justify-start">
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={isInView ? { opacity: 1 } : {}}
-                      transition={{ delay: index * 0.1 + 0.1 }}
-                    >
-                      <h3 className="text-2xl md:text-3xl font-bold heading-font mb-2">
-                        {exp.title}
-                      </h3>
-                      <p className="text-lg text-purple-600 dark:text-purple-400 font-semibold mb-4">
-                        {exp.organization}
-                      </p>
+                {/* Content */}
+                <div className="md:col-span-3">
+                  <h3 className="text-2xl font-bold mb-2">
+                    {exp.title}
+                  </h3>
 
-                      <div className="flex flex-wrap gap-4 mb-6 text-sm text-slate-600 dark:text-slate-400">
-                        <div className="flex items-center gap-2">
-                          <Calendar size={16} />
-                          <span>
-                            {formatDate(exp.start_date)}
-                            {exp.end_date ? ` - ${formatDate(exp.end_date)}` : ' - Present'}
-                          </span>
-                        </div>
-                      </div>
+                  <p className="text-purple-600 dark:text-purple-400 font-semibold mb-3">
+                    {exp.organization}
+                  </p>
 
-                      <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
-                        {exp.description}
-                      </p>
-
-                      {exp.skills && exp.skills.length > 0 && (
-                        <div>
-                          <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">
-                            Skills & Impact
-                          </p>
-                          <div className="flex flex-wrap gap-2">
-                            {exp.skills.map((skill, skillIndex) => (
-                              <motion.span
-                                key={skillIndex}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                                transition={{
-                                  delay: index * 0.1 + skillIndex * 0.05,
-                                }}
-                                className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full"
-                              >
-                                {skill}
-                              </motion.span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </motion.div>
+                  <div className="flex items-center gap-2 text-sm text-slate-500 mb-4">
+                    <Calendar size={16} />
+                    <span>
+                      {formatDate(exp.start_date)} -{" "}
+                      {exp.end_date ? formatDate(exp.end_date) : "Present"}
+                    </span>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 text-center"
-          >
+                  <p className="text-slate-700 dark:text-slate-300 mb-4">
+                    {exp.description}
+                  </p>
+
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-2">
+                    {exp.skills.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-sm rounded-full"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Button */}
+          <div className="mt-16 text-center">
             <a
               href="https://www.linkedin.com/in/bhagya-piyumali-senevirathna/"
               target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-semibold hover:scale-105 transition-transform"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-semibold hover:scale-105 transition"
             >
               <Linkedin size={20} />
               View More on LinkedIn
             </a>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
