@@ -2,27 +2,22 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { ThemeProvider } from './providers';
 
-export const metadata: Metadata = {
-  title: 'Bhagya Senevirathna | Software Engineering Student',
-  description: 'Passionate Software Engineering Student from Negombo, Sri Lanka, specializing in full-stack development and AI solutions.',
+export const metadata = {
+  title: "Bhagya Senevirathna | Portfolio",
+  description: "Software Engineering Student from Sri Lanka",
   openGraph: {
-    title: 'Bhagya Senevirathna | Software Engineering Student',
-    description: 'Passionate Software Engineering Student from Negombo, Sri Lanka',
+    title: "Bhagya Portfolio",
+    description: "My personal portfolio website",
+    url: "https://bhagya-portfolio-gamma.vercel.app",
+    siteName: "Bhagya Portfolio",
     images: [
       {
-        url: 'https://bolt.new/static/og_default.png',
+        url: "/profile.jpeg", // or any banner image
+        width: 1200,
+        height: 630,
       },
     ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Bhagya Senevirathna | Software Engineering Student',
-    description: 'Passionate Software Engineering Student from Negombo, Sri Lanka',
-    images: [
-      {
-        url: 'https://bolt.new/static/og_default.png',
-      },
-    ],
+    type: "website",
   },
 };
 
