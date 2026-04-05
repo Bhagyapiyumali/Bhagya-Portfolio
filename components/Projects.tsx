@@ -15,7 +15,7 @@ const projects = [
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Leaflet.js', 'Weather API'],
     gradient: 'from-blue-500 to-cyan-500',
     demo: '#',
-    github: '#',
+    github: 'https://github.com/CeylonConnect/ceyclon-connect',
     image: '/projects/tourism.jpg',
   },
   {
@@ -115,9 +115,10 @@ export default function Projects() {
                         <ExternalLink size={16} /> Demo
                       </a>
                       <a
-                        href={project.github}
+                       href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex-1 px-4 py-2 bg-slate-900 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors"
-                        onClick={(e) => e.preventDefault()}
                       >
                         <Github size={16} /> Code
                       </a>
