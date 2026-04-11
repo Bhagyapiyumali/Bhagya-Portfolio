@@ -6,42 +6,55 @@ import { ExternalLink, Github, MapPin, Camera, SquareCheck as CheckSquare } from
 
 const projects = [
   {
-    title: 'Sri Lanka Tourism Explorer',
+    title: 'E commerce Platform⁠',
     description:
-      'A comprehensive tourism platform showcasing Sri Lankan districts with integrated weather data, interactive maps, and accommodation listings.',
+      'A comprehensive e-commerce platform for buying products online.',
     longDescription:
-      'Full-featured web application built with Next.js, featuring real-time weather integration, Leaflet maps, and a responsive design optimized for mobile devices.',
+      'A full-stack web application that enables customers and sellers to connect, browse, and trade products through an intuitive online marketplace. The platform includes user authentication, product listings, shopping cart and order management, secure transactions, and an admin dashboard, with a focus on scalability, user experience, and efficient e-commerce operations.',
     icon: MapPin,
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Leaflet.js', 'Weather API'],
+    tech: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
     gradient: 'from-blue-500 to-cyan-500',
     demo: '#',
-    github: 'https://github.com/CeylonConnect/ceyclon-connect',
+    github: 'https://github.com/Bhagyapiyumali/e-commerce-platform',
     image: '/projects/tourism.jpg',
   },
   {
-    title: 'Malnutrition Detection System',
+    title: 'CeylonConnect Tourism Web Platform',
     description:
-      'AI-powered computer vision application that detects signs of malnutrition in children using advanced image recognition.',
+      'A comprehensive tourism platform showcasing Sri Lankan districts with integrated weather data, interactive maps, and accommodation listings.',
     longDescription:
-      'Machine learning solution using TensorFlow and React, trained on medical datasets to provide early detection and recommendations for healthcare professionals.',
+      'A full-stack tour booking platform for Sri Lanka that connects tourists with local guides. Tourists can discover and book tours, guides can create and manage listings, request verification badges, and interact with customers, while admins manage the entire system through a dedicated dashboard.',
     icon: Camera,
-    tech: ['Python', 'TensorFlow', 'React', 'Flask', 'Computer Vision'],
+    tech: ['React Vite', 'Tailwind CSS', 'Node.js', 'Express 5', 'MySQL', 'JWT', 'Pusher'],
     gradient: 'from-purple-500 to-pink-500',
     demo: '#',
-    github: '#',
+    github: 'https://github.com/CeylonConnect/ceyclon-connect',
     image: '/projects/malnutrition.jpg',
   },
   {
-    title: 'Smart Task Manager',
+    title: 'Paddy Buying and Selling Platform',
     description:
-      'Collaborative task management application with AI-powered priority suggestions and team collaboration features.',
+      'A platform for buying and selling paddy, connecting farmers with buyers and facilitating transactions.',
     longDescription:
-      'Modern full-stack app built with Next.js and Supabase, featuring real-time updates, AI task prioritization, and seamless team collaboration tools.',
+      'A full-stack web application that allows farmers and buyers to connect, chat, and trade agricultural products like paddy and related goods. The platform supports user authentication, real-time chat, gig/​shop listings, blog posts, and an AI-powered agricultural chatbot.',
     icon: CheckSquare,
     tech: ['Next.js', 'Supabase', 'TypeScript', 'OpenAI API', 'Prisma'],
     gradient: 'from-emerald-500 to-teal-500',
     demo: '#',
-    github: '#',
+    github: 'https://github.com/SE4106-Web-Project-Team/Paddy-buying-and-selling-Platform?tab=readme-ov-file#-paddy-buying-and-selling-platform',
+    image: '/projects/tasks.jpg',
+  },
+  {
+    title: 'Blood Bank Management System',
+    description:
+      'A platform for managing blood donations and distributions, connecting donors with recipients and healthcare facilities.',
+    longDescription:
+      'Full-stack Blood Bank Management System develop to digitize donor registration, blood stock management, and campaign coordination. Features real-time updates, automated donor scheduling, and notifications to improve efficiency and emergency response in hospital operations.',
+    icon: CheckSquare,
+    tech: ['Next.js', 'Supabase', 'TypeScript', 'OpenAI API', 'Prisma'],
+    gradient: 'from-emerald-500 to-teal-500',
+    demo: '#',
+    github: 'https://github.com/SE4106-Web-Project-Team/Paddy-buying-and-selling-Platform?tab=readme-ov-file#-paddy-buying-and-selling-platform',
     image: '/projects/tasks.jpg',
   },
 ];
