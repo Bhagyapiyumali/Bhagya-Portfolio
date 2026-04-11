@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Send, Mail, MapPin, Phone } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
   const ref = useRef(null);
@@ -14,10 +15,26 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      await emailjs.send(
+        'service_pqmxgwa',
+        'template_s71wkww',
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        'JF80S0ck08s3Jha4i'
+      );
 
-    alert(`Thank you ${form.name}! Your message has been sent successfully.`);
-    setForm({ name: '', email: '', message: '' });
+      alert(`Thank you ${form.name}! Your message has been sent successfully.`);
+      setForm({ name: '', email: '', message: '' });
+
+    } catch (error) {
+      console.error(error);
+      alert('Failed to send message. Please try again.');
+    }
+
     setIsSubmitting(false);
   };
 
