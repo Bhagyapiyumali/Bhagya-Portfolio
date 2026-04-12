@@ -36,7 +36,7 @@ export default function About() {
               className="space-y-6 text-lg text-slate-600 dark:text-slate-400"
             >
               <p>
-                I'm a passionate <strong className="text-slate-900 dark:text-white">Software Engineering student</strong> from Negombo, Sri Lanka, driven by a deep love for technology and innovation.
+                I'm a passionate <strong className="text-slate-900 dark:text-white">Software Engineering student</strong> from Monaragala, Sri Lanka, driven by a deep love for technology and innovation.
               </p>
               <p>
                 My journey in software development began with curiosity and has evolved into a commitment to creating impactful solutions. I specialize in <strong className="text-slate-900 dark:text-white">full-stack development</strong> and have a growing interest in <strong className="text-slate-900 dark:text-white">artificial intelligence</strong>.
