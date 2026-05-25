@@ -100,7 +100,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <motion.a
-              href="https://drive.google.com/your-cv"
+              href="Bhagya_Piyumali_Senevirathna_SE..pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden lg:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-sm font-semibold shadow-lg hover:shadow-xl transition-all"
@@ -160,7 +160,7 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <motion.a
-                href="https://drive.google.com/your-cv"
+                href="Bhagya_Piyumali_Senevirathna_SE..pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-sm font-semibold justify-center"
